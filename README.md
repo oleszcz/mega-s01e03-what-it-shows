@@ -5,7 +5,7 @@
 - [Signed review source](src/routes/kb/incidents/4471-review/+page.svx)
 - [Rendered review HTML](build/kb/incidents/4471-review.html) — download/serve the `build` directory to include its CSS and interactive JavaScript.
 - [Replacement decision](src/routes/kb/decisions/0002-dedupe-by-cause/+page.svx)
-- [GitHub issues](https://github.com/oleszcz/mega-s01e03-what-it-shows/issues): parser (379 assigned), hint (33), and five overlapping anomalies for investigation.
+- [GitHub issues](https://github.com/oleszcz/mega-s01e03-what-it-shows/issues): parser (379 assigned, including five anomalies for investigation) and hint (33). The overlapping anomaly ticket #3 is closed.
 
 Run `npm ci`, `npm run analyze`, and `npm run build`. For the complete interactive desk view,
 run `npx vite preview --host 127.0.0.1` and open `/kb/incidents/4471-review`.

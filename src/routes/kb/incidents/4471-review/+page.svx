@@ -58,8 +58,9 @@ forms; fixing the shared parser alone does not establish that this problem is so
 
 ### Five anomalous reports — investigation, not a proven third root cause
 
-[GitHub ticket #3](https://github.com/oleszcz/mega-s01e03-what-it-shows/issues/3)
-tracks R-41202, R-41209, R-41236, R-41344, and R-41620. The table footnote says they were
+The investigation within [parser ticket #1](https://github.com/oleszcz/mega-s01e03-what-it-shows/issues/1)
+covers R-41202, R-41209, R-41236, R-41344, and R-41620. The separate investigation ticket #3
+was closed as overlapping scope. The table footnote says they were
 read as one-day moves but filed under parser by tenant. Their bodies are different evidence:
 
 - R-41202: Tuesday 12 May versus Monday 11 May.
