@@ -1,0 +1,107 @@
+---
+layout: runbook
+title: '#4471 review · two causes hidden by one known ticket'
+owner: oleszcz with OpenCode
+status: reviewed
+reviewed: '2026-10-29'
+signature: 'oleszcz / OpenCode / S01E03 / 2026-10-29'
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+</script>
+
+## Decision for the next report
+
+Do not treat every date complaint as the known parser bug. Keep one ticket per demonstrated
+cause, reading the body and checking the tenant's locale, booking form, and channel.
+Subject matches and intake tags are clues, not a duplicate decision. If the cause is unknown,
+keep the report open for investigation rather than merging it automatically.
+
+This review replaces the operational advice in the [original incident](/kb/incidents/4471)
+and [subject-only triage](/kb/triage/dedupe). The historical accepted
+[decision 0001](/kb/decisions/0001-dedupe-by-subject) is preserved; the replacement is
+[decision 0002](/kb/decisions/0002-dedupe-by-cause).
+
+## What the desk's components actually show
+
+<CauseTable ticket={4471} />
+
+The export has **427 rows but 412 unique report IDs**. Overlapping export pages repeat 15
+rows; a repeated ID is one report, not another affected person. The computed table assigns
+**379 to parser and 33 to hint**. These sum to 412, with no unplaced reports. Browser-based
+intake tags instead suggest 371 parser and 41 hint: 23 parser reports were tagged hint and
+15 hint reports were tagged parser. Use the tenant directory, not browser locale, for this
+classification. Run `npm run analyze` for all IDs and reproducible checks.
+
+### Parser issue — 379 assigned reports
+
+[GitHub ticket #1](https://github.com/oleszcz/mega-s01e03-what-it-shows/issues/1)
+covers the shared month-first parser used for day-first tenants. For example, Harbour Dental
+uses `en-GB` and booking-v2; R-41200 says 7 April became 4 July. Morrow Tax uses `fr-FR`,
+despite R-41205's browser reporting `en-US`. Its app report belongs to parser, not hint.
+App and email reports can share this cause; booking-v2 form reports also belong here.
+Repair parsing against the tenant's expected date order and check app, email, and v2 inputs.
+
+### Form-hint issue — 33 reports, with no independent ticket before this review
+
+[GitHub ticket #2](https://github.com/oleszcz/mega-s01e03-what-it-shows/issues/2)
+covers booking-v3 form reports from Alder Physio (`de-DE`), Copper Studio (`es-ES`), and Pale
+Harbour (`pt-PT`). The hint prints `MM/DD/YYYY`, but the form reads dates the tenant's day-first
+way. Someone following the hint gets a different date. R-41230 is Copper Studio, channel
+`form`, and is incorrectly intake-tagged parser. Fix the hint and parser agreement for these
+forms; fixing the shared parser alone does not establish that this problem is solved.
+
+### Five anomalous reports — investigation, not a proven third root cause
+
+[GitHub ticket #3](https://github.com/oleszcz/mega-s01e03-what-it-shows/issues/3)
+tracks R-41202, R-41209, R-41236, R-41344, and R-41620. The table footnote says they were
+read as one-day moves but filed under parser by tenant. Their bodies are different evidence:
+
+- R-41202: Tuesday 12 May versus Monday 11 May.
+- R-41209: every June booking is one day off.
+- R-41236: an invite arrived before its booking was made.
+- R-41344: Lisbon Tuesday versus Toronto Monday for the same meeting.
+- R-41620: Tuesday 6 October showed as Monday; the reporter says they stopped reporting.
+
+Do not invent a confirmed timezone or scheduling root cause from these sentences. Ask for
+original input, stored date/time, event timezone, generated invite, client timezone, and
+creation/delivery timestamps; compare the two clients for R-41344. Investigate ordering for
+R-41236 separately if it cannot share the same cause. These **five are already inside the
+379**, not five additional reports: 374 other parser-assigned + 5 anomalous + 33 hint = 412.
+
+## When it happened, and what “known” concealed
+
+<QueueTimeline ticket={4471} />
+
+Received and merged are different clocks. Reports began on 1 April; the 2 July merge spike
+is a batch of 184 older reports, not the start of the problem or a sudden influx that day.
+Reports continued to 4 October, including R-41620. “Known” and “fix queued” are desk labels,
+not evidence that the underlying causes stopped harming people. Some people moved dates
+themselves, held a meeting twice, or stopped reporting. Report counts measure incoming
+reports, not every failure or every affected user.
+
+## Replace the merging rule while the desk keeps working
+
+<DedupeExplorer />
+
+The explorer already contradicts subject-only advice. Different subjects can share a cause;
+the same subject can hide different causes when the channel or tenant/form changes. Two
+unknown tenants do not establish a shared cause. A number or chart can be fresh while the
+surrounding prose is old; the reviewed date and stale banner on the older triage page matter.
+
+Effective immediately: look up the tenant, read the body, compare the affected path and
+mechanism, and merge only after confirming the same cause. Use the two engineering tickets
+above; keep the five anomalies visibly pending investigation. Link this review from the
+incident and triage pages so the next support shift finds the replacement rule.
+
+<Callout>
+The source and rendered page are both deliverables. The tables, timeline, interactive examples,
+and signature below come from running the exported components, not copying their source tags.
+</Callout>
+
+<RenderStamp {signature} />

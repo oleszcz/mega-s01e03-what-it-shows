@@ -1,0 +1,36 @@
+---
+layout: runbook
+title: '0002 · Confirm the cause before merging reports'
+owner: oleszcz with OpenCode
+status: accepted
+reviewed: '2026-10-29'
+signature: 'oleszcz / OpenCode / S01E03 / 2026-10-29'
+---
+
+<script>
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+**Date:** 29 October 2026 · **Replaces:** [decision 0001](/kb/decisions/0001-dedupe-by-subject).
+
+## Context
+
+The old subject-only rule hid separate causes in #4471. Its prose disagrees with the desk's
+computed cause table and interactive duplicate explorer. See the
+[signed incident review](/kb/incidents/4471-review) for the evidence and tickets.
+
+## Decision
+
+Read the report and look up its tenant locale, booking form, and channel. Merge only when
+the mechanism and affected path establish the same cause. A matching subject or intake tag
+does not prove a duplicate. Different subjects can still share a cause. Unknown tenants and
+unexplained symptoms stay open for investigation; do not force them into a known bucket.
+
+## Consequences
+
+Triage needs more reading, but engineering receives separate actionable causes. Preserve
+unique report IDs and the original evidence. Reconcile counts after each export, and keep
+anomalies visible even when the automatic classifier assigns them to an existing cause.
+The historical accepted record 0001 remains unchanged.
+
+<RenderStamp {signature} />
