@@ -1,3 +1,9 @@
+## Resolution — won't fix / not planned
+
+The course's engineering update says #4471 closed 5 October 2026: hint WON'T FIX,
+booking-v3 form retired. Close as not planned, not completed: the affected form was removed,
+not repaired. Preserve the 33-report evidence below.
+
 ## Scope and report count
 
 **33 unique reports** in #4471 have a separate `hint` cause after deduplicating IDs. They come from booking-v3 forms for Alder Physio (`de-DE`), Copper Studio (`es-ES`), and Pale Harbour (`pt-PT`), 2026-04-17 through 2026-09-22. Intake incorrectly tags 15 parser and 18 hint.

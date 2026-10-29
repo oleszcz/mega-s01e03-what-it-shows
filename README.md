@@ -17,6 +17,11 @@ The dated export covers reports through 4 October 2026. Runtime freshness banner
 the rendering date. Counts deduplicate 427 rows to 412 reports: 379 parser-assigned (including
 five anomalies) plus 33 hint. No claim is made that the five anomalies have a proven common cause.
 
+The course's subsequent desk update closes #4471 on 5 October: parser **fixed**
+(`fix(dates): parse dd/mm for eu locales`); hint **won't fix** because booking-v3 was retired.
+Issue #1 is completed; issue #2 is not planned. Retirement is not a hint repair. The signed
+review records both outcomes while preserving the original evidence and anomalous reports.
+
 **kb** = knowledge base. What the support desk knows about how our products break, written
 down where the code can keep it honest.
 

@@ -2,8 +2,8 @@
 layout: runbook
 title: '#4471 · dates parse mm/dd in eu locales'
 owner: support desk
-status: known
-reviewed: 2026-09-30
+status: closed
+reviewed: '2026-10-29'
 ---
 
 <script>
@@ -14,6 +14,7 @@ reviewed: 2026-09-30
 
 > **Operational update, 29 October:** this page's one-cause summary is superseded by the
 > [signed review and separate tickets](/kb/incidents/4471-review). Use that review for new reports.
+> The desk closed #4471 on 5 October: parser fixed; hint won't fix because booking-v3 was retired.
 
 Since April, people have told us their bookings land on the wrong day: a month flipped. By
 4 October the desk had **412 reports**.

@@ -1,3 +1,9 @@
+## Resolution — completed
+
+The course's engineering update says #4471 closed 5 October 2026: parser FIXED,
+`fix(dates): parse dd/mm for eu locales`. Close as completed based on that desk update.
+The five anomalous bodies below remain historical evidence without an independently proven mechanism.
+
 ## Scope and report count
 
 **379 unique reports** are assigned to `parser` in #4471 by the exported `causeOf` function after deduplicating IDs. This includes five anomalies investigated within this ticket; 374 other parser-assigned + 5 anomalous + 33 form-hint = 412. The overlapping investigation #3 is closed. Do not claim every assigned report proves the same mechanism.

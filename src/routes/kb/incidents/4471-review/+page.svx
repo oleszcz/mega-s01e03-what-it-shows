@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 review · two causes hidden by one known ticket'
 owner: oleszcz with OpenCode
-status: reviewed
+status: closed
 reviewed: '2026-10-29'
 signature: 'oleszcz / OpenCode / S01E03 / 2026-10-29'
 ---
@@ -16,6 +16,14 @@ signature: 'oleszcz / OpenCode / S01E03 / 2026-10-29'
 </script>
 
 ## Decision for the next report
+
+**Desk update — #4471 closed 5 October 2026.** Engineering marks the parser **fixed**:
+`fix(dates): parse dd/mm for eu locales`. The form-hint issue is **won't fix** because
+**booking-v3 was retired**. These are different resolutions: the hint was not repaired.
+Ticket #1 closes as completed; ticket #2 closes as not planned. The export and tables below
+describe the pre-closure evidence and keep their original counts. New reports need fresh
+triage against the current product; the update does not establish a mechanism for the five
+anomalous bodies or prove that every historic affected booking was corrected.
 
 Do not treat every date complaint as the known parser bug. Keep one ticket per demonstrated
 cause, reading the body and checking the tenant's locale, booking form, and channel.
@@ -45,7 +53,7 @@ covers the shared month-first parser used for day-first tenants. For example, Ha
 uses `en-GB` and booking-v2; R-41200 says 7 April became 4 July. Morrow Tax uses `fr-FR`,
 despite R-41205's browser reporting `en-US`. Its app report belongs to parser, not hint.
 App and email reports can share this cause; booking-v2 form reports also belong here.
-Repair parsing against the tenant's expected date order and check app, email, and v2 inputs.
+The recommended repair was tenant-aware parsing; the desk now reports the parser fixed.
 
 ### Form-hint issue — 33 reports, with no independent ticket before this review
 
@@ -53,8 +61,9 @@ Repair parsing against the tenant's expected date order and check app, email, an
 covers booking-v3 form reports from Alder Physio (`de-DE`), Copper Studio (`es-ES`), and Pale
 Harbour (`pt-PT`). The hint prints `MM/DD/YYYY`, but the form reads dates the tenant's day-first
 way. Someone following the hint gets a different date. R-41230 is Copper Studio, channel
-`form`, and is incorrectly intake-tagged parser. Fix the hint and parser agreement for these
-forms; fixing the shared parser alone does not establish that this problem is solved.
+`form`, and is incorrectly intake-tagged parser. The recommended repair was agreement between
+hint and parser. Engineering instead retired booking-v3 and marked this won't fix; do not
+describe that as a repaired hint or as part of the parser fix.
 
 ### Five anomalous reports — investigation, not a proven third root cause
 
@@ -97,7 +106,7 @@ surrounding prose is old; the reviewed date and stale banner on the older triage
 
 Effective immediately: look up the tenant, read the body, compare the affected path and
 mechanism, and merge only after confirming the same cause. Use the two engineering tickets
-above; keep the five anomalies visibly pending investigation. Link this review from the
+above as closed historical records; keep the five anomalies visible as unresolved evidence. Link this review from the
 incident and triage pages so the next support shift finds the replacement rule.
 
 <Callout>
