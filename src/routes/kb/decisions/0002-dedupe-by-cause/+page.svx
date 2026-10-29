@@ -4,7 +4,7 @@ title: '0002 · Confirm the cause before merging reports'
 owner: oleszcz with OpenCode
 status: accepted
 reviewed: '2026-10-29'
-signature: 'oleszcz / OpenCode / S01E03 / 2026-10-29'
+signature: 'v1.eyJzdWIiOiI5MjE0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzMDM1NzMsImV4cCI6MTc5MzM4OTk3M30.Kdp5F67i0g2jdwVQwSBYx2XgC34sZkN0vzS_rySVN80'
 ---
 
 <script>

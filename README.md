@@ -10,7 +10,7 @@
 Run `npm ci`, `npm run analyze`, and `npm run build`. For the complete interactive desk view,
 run `npx vite preview --host 127.0.0.1` and open `/kb/incidents/4471-review`.
 The exported components are rendered by SvelteKit + mdsvex; numbers are not copied from intake tags.
-The signed page displays desk ref **DR-6D50-DNE9**. The unchanged historical accepted
+The signed page derives its desk ref from the course-issued signature. The unchanged historical accepted
 decision 0001 is superseded by 0002, and the active incident/triage pages link to the update.
 
 The dated export covers reports through 4 October 2026. Runtime freshness banners depend on
